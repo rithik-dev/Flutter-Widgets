@@ -1,6 +1,6 @@
 # flutter_common_widgets
 
-A new Flutter application.
+Some flutter widgets which I commonly use in my applications...
 
 ## Getting Started
 
