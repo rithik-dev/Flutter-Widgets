@@ -48,7 +48,7 @@ class MyTextField extends StatefulWidget {
     this.borderRadius = 20,
     this.contentPadding = const EdgeInsets.symmetric(
       vertical: 10.0,
-      horizontal: 30.0,
+      horizontal: 20.0,
     ),
   });
 
