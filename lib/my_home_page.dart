@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_common_widgets/widgets/add_button.dart';
+import 'package:flutter_common_widgets/widgets/cart_icon.dart';
 import 'package:flutter_common_widgets/widgets/profile_picture.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -25,6 +26,10 @@ class MyHomePage extends StatelessWidget {
             _widgetShowcase(
               title: "add_button.dart",
               widget: AddButton(width: 125),
+            ),
+            _widgetShowcase(
+              title: "cart_icon.dart",
+              widget: CartIcon(),
             ),
           ],
         ),
