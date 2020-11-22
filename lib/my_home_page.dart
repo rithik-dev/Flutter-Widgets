@@ -3,11 +3,18 @@ import 'package:flutter_common_widgets/widgets/add_button.dart';
 import 'package:flutter_common_widgets/widgets/cart_icon.dart';
 import 'package:flutter_common_widgets/widgets/custom_button.dart';
 import 'package:flutter_common_widgets/widgets/my_cached_network_image.dart';
+import 'package:flutter_common_widgets/widgets/my_image_slider.dart';
 import 'package:flutter_common_widgets/widgets/profile_picture.dart';
 
 class MyHomePage extends StatelessWidget {
   static const IMAGE_URL =
       "https://images.unsplash.com/photo-1605964883324-6d18a190faf3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=631&q=80";
+  static const List<String> imageUrls = [
+    "https://images.unsplash.com/photo-1606017259066-546f13c8c90d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
+    "https://images.unsplash.com/photo-1606005426430-9768fe577b3c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+    "https://images.unsplash.com/photo-1605962608033-5795d98818a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    "https://images.unsplash.com/photo-1606017259057-527114e27826?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,6 @@ class MyHomePage extends StatelessWidget {
           title: Text("Flutter Widgets"),
         ),
         body: ListView(
-          padding: EdgeInsets.all(10),
           children: [
             _widgetShowcase(
               title: "profile_picture.dart",
@@ -53,6 +59,17 @@ class MyHomePage extends StatelessWidget {
                 imageHeight: 200,
                 imageWidth: double.infinity,
                 borderRadius: 10,
+              ),
+            ),
+            _widgetShowcase(
+              title: "my_image_slider.dart",
+              widget: MyImageSlider(
+                autoPlay: true,
+                photoUrls: imageUrls,
+                backgroundColor: Colors.black,
+                showDots: true,
+                activeDotColor: Colors.yellow,
+                inactiveDotColor: Colors.red,
               ),
             ),
           ],
