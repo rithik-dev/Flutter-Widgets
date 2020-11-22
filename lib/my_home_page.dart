@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
             ),
             _widgetShowcase(
               title: "cart_icon.dart",
-              widget: CartIcon(),
+              widget: CartIcon(count: 29),
             ),
           ],
         ),
