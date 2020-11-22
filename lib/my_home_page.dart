@@ -4,6 +4,7 @@ import 'package:flutter_common_widgets/widgets/cart_icon.dart';
 import 'package:flutter_common_widgets/widgets/custom_button.dart';
 import 'package:flutter_common_widgets/widgets/my_cached_network_image.dart';
 import 'package:flutter_common_widgets/widgets/my_image_slider.dart';
+import 'package:flutter_common_widgets/widgets/my_text_field.dart';
 import 'package:flutter_common_widgets/widgets/profile_picture.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -70,6 +71,15 @@ class MyHomePage extends StatelessWidget {
                 showDots: true,
                 activeDotColor: Colors.yellow,
                 inactiveDotColor: Colors.red,
+              ),
+            ),
+            _widgetShowcase(
+              title: "my_text_field.dart",
+              widget: MyTextField(
+                labelText: "Search",
+                onChanged: (String value) {},
+                isPasswordField: true,
+                width: 300,
               ),
             ),
           ],
