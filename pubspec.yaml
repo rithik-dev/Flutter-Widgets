@@ -8,7 +8,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.1
   shimmer: ^1.1.2
   cached_network_image: ^2.3.3
   carousel_slider: ^2.3.1

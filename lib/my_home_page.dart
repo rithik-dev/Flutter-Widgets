@@ -37,7 +37,11 @@ class MyHomePage extends StatelessWidget {
             ),
             _widgetShowcase(
               title: "add_button.dart",
-              widget: AddButton(width: 125),
+              widget: AddButton(
+                onChanged: (int v) => print('onChanged $v'),
+                onMaxValue: (int v) => print('onMaxValue $v'),
+                maxValue: 10,
+              ),
             ),
             _widgetShowcase(
               title: "cart_icon.dart",
