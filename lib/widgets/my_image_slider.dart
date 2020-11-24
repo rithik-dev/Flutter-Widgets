@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'my_cached_network_image.dart';
@@ -37,6 +38,7 @@ class _MyImageSliderState extends State<MyImageSlider> {
 
   @override
   Widget build(BuildContext context) {
+    if (_photosLength == 0) return SizedBox.shrink();
     return Column(
       children: [
         Container(
