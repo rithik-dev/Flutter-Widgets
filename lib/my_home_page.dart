@@ -43,10 +43,10 @@ class MyHomePage extends StatelessWidget {
                 onMinValue: (int v) => print('onMinValue $v'),
                 addIcon: Icons.arrow_forward_ios,
                 removeIcon: Icons.arrow_back_ios,
-                initialValue: 8,
+                initialValue: 15,
                 iconSize: 15,
-                maxValue: 10,
-                minValue: 5,
+                maxValue: 20,
+                minValue: 10,
               ),
             ),
             _widgetShowcase(

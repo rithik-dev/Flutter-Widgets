@@ -46,10 +46,16 @@ class AddButton extends StatefulWidget {
     this.addIcon = Icons.add,
     this.removeIcon = Icons.remove,
   }) {
-    if (initialValue != null)
+    if (initialValue != null && minValue != null)
       assert(
-        minValue <= initialValue && initialValue <= maxValue,
-        "The initial value must be between minValue and maxValue",
+        minValue <= initialValue,
+        "The initialValue must be greater than minValue",
+      );
+
+    if (initialValue != null && maxValue != null)
+      assert(
+        initialValue <= maxValue,
+        "The initialValue must be less than maxValue",
       );
   }
 
@@ -111,12 +117,13 @@ class _AddButtonState extends State<AddButton> {
             ),
             Expanded(
               child: InkWell(
-                onTap: () => count == 0
+                onTap: () =>
+                count == 0
                     ? count == widget.maxValue
-                        ? widget.onMaxValue == null
-                            ? null
-                            : widget.onMaxValue(count)
-                        : increment()
+                    ? widget.onMaxValue == null
+                    ? null
+                    : widget.onMaxValue(count)
+                    : increment()
                     : null,
                 child: Text(
                   count == 0 ? widget.addText : count.toString(),
