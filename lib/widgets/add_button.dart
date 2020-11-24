@@ -5,8 +5,11 @@ class AddButton extends StatefulWidget {
   final int height;
   final String addText;
   final int maxValue;
+  final int minValue;
   final Function(int) onChanged;
   final Function(int) onMaxValue;
+  final Function(int) onMinValue;
+  final double iconSize;
   final Color disabledColor;
   final Color enabledColor;
   final Color iconColor;
@@ -16,13 +19,20 @@ class AddButton extends StatefulWidget {
   final Color countBackgroundColor;
   final Color borderColor;
   final bool showBorder;
+  final IconData addIcon;
+  final IconData removeIcon;
+  final int initialValue;
 
   AddButton({
     @required this.onChanged,
     this.height,
     this.maxValue,
     this.onMaxValue,
+    this.onMinValue,
+    this.iconSize,
+    this.initialValue,
     this.width = 100,
+    this.minValue = 0,
     this.addText = 'ADD',
     this.disabledColor = Colors.grey,
     this.enabledColor = Colors.deepOrange,
@@ -33,14 +43,28 @@ class AddButton extends StatefulWidget {
     this.textColor = Colors.white,
     this.borderColor = Colors.deepOrange,
     this.showBorder = true,
-  });
+    this.addIcon = Icons.add,
+    this.removeIcon = Icons.remove,
+  }) {
+    if (initialValue != null)
+      assert(
+        minValue <= initialValue && initialValue <= maxValue,
+        "The initial value must be between minValue and maxValue",
+      );
+  }
 
   @override
   _AddButtonState createState() => _AddButtonState();
 }
 
 class _AddButtonState extends State<AddButton> {
-  int count = 0;
+  int count;
+
+  @override
+  void initState() {
+    count = widget.initialValue ?? widget.minValue;
+    super.initState();
+  }
 
   void increment() {
     setState(() {
@@ -78,9 +102,13 @@ class _AddButtonState extends State<AddButton> {
             count == 0
                 ? SizedBox.shrink()
                 : _buildButton(
-                    onTap: decrement,
-                    iconData: Icons.remove,
-                  ),
+              onTap: () =>
+              count == widget.minValue
+                  ? widget.onMinValue == null
+                  ? null
+                  : widget.onMinValue(count)
+                  : decrement(),
+            ),
             Expanded(
               child: InkWell(
                 onTap: () => count == 0
@@ -110,7 +138,7 @@ class _AddButtonState extends State<AddButton> {
                   ? null
                   : widget.onMaxValue(count)
                   : increment(),
-              iconData: Icons.add,
+              isAddButton: true,
             ),
           ],
         ),
@@ -120,20 +148,26 @@ class _AddButtonState extends State<AddButton> {
 
   Container _buildButton({
     @required VoidCallback onTap,
-    @required IconData iconData,
+    bool isAddButton = false,
   }) {
     return Container(
-      color: iconData == Icons.add
+      color: isAddButton
           ? count == widget.maxValue
           ? this.widget.disabledColor
           : this.widget.enabledColor
+          : count == widget.minValue
+          ? this.widget.disabledColor
           : this.widget.enabledColor,
       alignment: Alignment.center,
       width: 30,
       child: IconButton(
         padding: EdgeInsets.zero,
         iconSize: 20,
-        icon: Icon(iconData, color: this.widget.iconColor),
+        icon: Icon(
+          isAddButton ? this.widget.addIcon : this.widget.removeIcon,
+          color: this.widget.iconColor,
+          size: this.widget.iconSize,
+        ),
         onPressed: onTap,
       ),
     );

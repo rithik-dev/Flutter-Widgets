@@ -40,7 +40,13 @@ class MyHomePage extends StatelessWidget {
               widget: AddButton(
                 onChanged: (int v) => print('onChanged $v'),
                 onMaxValue: (int v) => print('onMaxValue $v'),
+                onMinValue: (int v) => print('onMinValue $v'),
+                addIcon: Icons.arrow_forward_ios,
+                removeIcon: Icons.arrow_back_ios,
+                initialValue: 8,
+                iconSize: 15,
                 maxValue: 10,
+                minValue: 5,
               ),
             ),
             _widgetShowcase(
