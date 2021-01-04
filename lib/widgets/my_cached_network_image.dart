@@ -30,8 +30,9 @@ class MyCachedNetworkImage extends StatelessWidget {
           fit: BoxFit.cover,
           placeholder: (context, _) => Shimmer.fromColors(
             child: Container(color: Colors.white),
-            baseColor: Colors.white,
-            highlightColor: Colors.grey,
+            baseColor: Colors.grey[400],
+            highlightColor: Colors.white,
+            period: Duration(milliseconds: 350),
           ),
           errorWidget: (context, _, __) => Icon(
             Icons.error,

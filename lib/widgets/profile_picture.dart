@@ -37,8 +37,9 @@ class ProfilePicture extends StatelessWidget {
             imageUrl: this.url,
             placeholder: (context, url) => Shimmer.fromColors(
               child: CircleAvatar(radius: this.radius),
-              baseColor: Colors.grey,
-              highlightColor: Colors.grey[300],
+              baseColor: Colors.grey[400],
+              highlightColor: Colors.white,
+              period: Duration(milliseconds: 350),
             ),
             errorWidget: (context, url, error) => Icon(Icons.error),
           ),
