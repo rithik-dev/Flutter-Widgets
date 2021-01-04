@@ -67,8 +67,8 @@ class MyHomePage extends StatelessWidget {
               widget: MyCachedNetworkImage(
                 url: IMAGE_URL,
                 padding: EdgeInsets.all(10),
-                imageHeight: 200,
-                imageWidth: double.infinity,
+                height: 200,
+                width: double.infinity,
                 borderRadius: 10,
               ),
             ),

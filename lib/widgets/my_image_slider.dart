@@ -54,8 +54,8 @@ class _MyImageSliderState extends State<MyImageSlider> {
             itemBuilder: (context, index) {
               return MyCachedNetworkImage(
                 url: this.widget.photoUrls[index],
-                imageWidth: double.infinity,
-                imageHeight: double.infinity,
+                width: double.infinity,
+                height: double.infinity,
                 borderRadius: 5,
                 padding: EdgeInsets.symmetric(horizontal: 5),
               );

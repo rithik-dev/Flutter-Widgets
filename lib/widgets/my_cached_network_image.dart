@@ -5,14 +5,14 @@ import 'package:shimmer/shimmer.dart';
 class MyCachedNetworkImage extends StatelessWidget {
   final String url;
   final double borderRadius;
-  final double imageWidth;
-  final double imageHeight;
+  final double width;
+  final double height;
   final EdgeInsets padding;
 
   MyCachedNetworkImage({
     @required this.url,
-    this.imageWidth,
-    this.imageHeight,
+    this.width,
+    this.height,
     this.borderRadius = 0,
     this.padding = EdgeInsets.zero,
   });
@@ -24,8 +24,8 @@ class MyCachedNetworkImage extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(this.borderRadius),
         child: CachedNetworkImage(
-          height: this.imageHeight,
-          width: this.imageWidth,
+          height: this.height,
+          width: this.width,
           imageUrl: this.url,
           fit: BoxFit.cover,
           placeholder: (context, _) => Shimmer.fromColors(
