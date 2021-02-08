@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AddButton extends StatefulWidget {
   final int width;
   final int height;
@@ -11,13 +12,13 @@ class AddButton extends StatefulWidget {
   final Function(int) onMinValue;
   final double iconSize;
   final Color disabledColor;
-  final Color enabledColor;
+  Color enabledColor;
   final Color iconColor;
   final Color countColor;
   final Color textColor;
-  final Color textBackgroundColor;
+  Color textBackgroundColor;
   final Color countBackgroundColor;
-  final Color borderColor;
+  Color borderColor;
   final bool showBorder;
   final IconData addIcon;
   final IconData removeIcon;
@@ -35,13 +36,13 @@ class AddButton extends StatefulWidget {
     this.minValue = 0,
     this.addText = 'ADD',
     this.disabledColor = Colors.grey,
-    this.enabledColor = Colors.deepOrange,
+    this.enabledColor,
     this.countColor = Colors.black,
-    this.iconColor = Colors.white,
-    this.textBackgroundColor = const Color(0xFFFF7230),
+    this.iconColor = Colors.black,
+    this.textBackgroundColor,
     this.countBackgroundColor = Colors.white,
     this.textColor = Colors.white,
-    this.borderColor = Colors.deepOrange,
+    this.borderColor,
     this.showBorder = true,
     this.addIcon = Icons.add,
     this.removeIcon = Icons.remove,
@@ -88,6 +89,10 @@ class _AddButtonState extends State<AddButton> {
 
   @override
   Widget build(BuildContext context) {
+    widget.enabledColor ??= Theme.of(context).accentColor;
+    widget.textBackgroundColor ??= Theme.of(context).accentColor;
+    widget.borderColor ??= Theme.of(context).accentColor;
+
     return SizedBox(
       height: widget.height?.toDouble(),
       width: widget.width?.toDouble(),
@@ -108,22 +113,20 @@ class _AddButtonState extends State<AddButton> {
             count == 0
                 ? SizedBox.shrink()
                 : _buildButton(
-              onTap: () =>
-              count == widget.minValue
-                  ? widget.onMinValue == null
-                  ? null
-                  : widget.onMinValue(count)
-                  : decrement(),
-            ),
+                    onTap: () => count == widget.minValue
+                        ? widget.onMinValue == null
+                            ? null
+                            : widget.onMinValue(count)
+                        : decrement(),
+                  ),
             Expanded(
               child: InkWell(
-                onTap: () =>
-                count == 0
+                onTap: () => count == 0
                     ? count == widget.maxValue
-                    ? widget.onMaxValue == null
-                    ? null
-                    : widget.onMaxValue(count)
-                    : increment()
+                        ? widget.onMaxValue == null
+                            ? null
+                            : widget.onMaxValue(count)
+                        : increment()
                     : null,
                 child: Text(
                   count == 0 ? widget.addText : count.toString(),
@@ -139,11 +142,10 @@ class _AddButtonState extends State<AddButton> {
               ),
             ),
             _buildButton(
-              onTap: () =>
-              count == widget.maxValue
+              onTap: () => count == widget.maxValue
                   ? widget.onMaxValue == null
-                  ? null
-                  : widget.onMaxValue(count)
+                      ? null
+                      : widget.onMaxValue(count)
                   : increment(),
               isAddButton: true,
             ),
@@ -160,11 +162,11 @@ class _AddButtonState extends State<AddButton> {
     return Container(
       color: isAddButton
           ? count == widget.maxValue
-          ? this.widget.disabledColor
-          : this.widget.enabledColor
+              ? this.widget.disabledColor
+              : this.widget.enabledColor
           : count == widget.minValue
-          ? this.widget.disabledColor
-          : this.widget.enabledColor,
+              ? this.widget.disabledColor
+              : this.widget.enabledColor,
       alignment: Alignment.center,
       width: 30,
       child: IconButton(
