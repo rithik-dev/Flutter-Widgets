@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_common_widgets/widgets/add_button.dart';
 import 'package:flutter_common_widgets/widgets/cart_icon.dart';
 import 'package:flutter_common_widgets/widgets/custom_button.dart';
+import 'package:flutter_common_widgets/widgets/custom_container.dart';
 import 'package:flutter_common_widgets/widgets/my_cached_network_image.dart';
 import 'package:flutter_common_widgets/widgets/my_image_slider.dart';
 import 'package:flutter_common_widgets/widgets/my_text_field.dart';
@@ -90,6 +91,25 @@ class MyHomePage extends StatelessWidget {
                 onChanged: (String value) {},
                 isPasswordField: true,
                 width: 300,
+              ),
+            ),
+            _widgetShowcase(
+              title: "custom_container.dart",
+              widget: CustomContainer(
+                child: Center(
+                  child: Text(
+                    "CUSTOM CONTAINER",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+                width: double.infinity,
+                padding: 15,
+                borderRadius: 50,
+                margin: const EdgeInsets.all(10),
+                borderColor: Colors.green,
+                borderWidth: 5,
+                elevation: 10,
+                onTap: () {},
               ),
             ),
           ],

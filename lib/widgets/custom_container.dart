@@ -25,7 +25,7 @@ class CustomContainer extends StatefulWidget {
     this.padding = 10,
     this.borderRadius = 5,
     this.borderWidth = 1,
-    this.backgroundColor = Colors.white,
+    this.backgroundColor,
     this.elevation = 5,
   });
 
@@ -56,7 +56,7 @@ class _CustomContainerState extends State<CustomContainer> {
               : BorderSide.none,
           borderRadius: BorderRadius.circular(this.widget.borderRadius),
         ),
-        color: this.widget.backgroundColor,
+        color: this.widget.backgroundColor ?? Theme.of(context).accentColor,
         elevation: _elevation,
         margin: this.widget.margin,
         shadowColor: this.widget.shadowColor ?? Theme.of(context).accentColor,
